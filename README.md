@@ -1,9 +1,10 @@
 <!-- ## Database Table Schema -->
+
 ## users table
 
-* id (uuid)
-* full_name (text)
-* avatar_url (text)
+- id (uuid)
+- full_name (text)
+- avatar_url (text)
 
 ## Creating a users table
 
@@ -69,8 +70,8 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ## Chat_Messages table (Real Time)
 
-* id (uuid)
-* Created At (date)
-* text (text)
-* editable (boolean)
-* sender (uuid)
+- id (uuid)
+- Created At (date)
+- text (text)
+- editable (boolean)
+- sender (uuid)
