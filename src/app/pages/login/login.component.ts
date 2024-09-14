@@ -13,7 +13,7 @@ export class LoginComponent {
     // constructor body
   }
   async handleAuth() {
-    const response = await this.auth.SigninGoogle();
+    const response = await this.auth.signInWithGoogle();
     console.log(response);
   }
 }
