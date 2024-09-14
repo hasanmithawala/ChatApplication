@@ -1,30 +1,19 @@
-import { inject, Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment.development';
-import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private supabase!: SupabaseClient;
-  private _ngZone = inject(NgZone);
-  constructor(private router: Router) {
+  constructor() {
     this.supabase = createClient(
       environment.supabaseurl,
       environment.supabaseKey
     );
     this.supabase.auth.onAuthStateChange((events, session) => {
-      localStorage.setItem('session', JSON.stringify(session?.user));
-      if (session?.user) {
-        this._ngZone.run(() => {
-          this.router.navigate(['/chat']);
-        });
-      }
+      console.log(events, session);
     });
-  }
-  get isLoggedIn(): boolean {
-    const user = localStorage.getItem('session') as string;
-    return user === 'undefined' ? false : true;
   }
   async SigninGoogle() {
     await this.supabase.auth.signInWithOAuth({

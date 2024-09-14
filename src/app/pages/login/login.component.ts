@@ -14,5 +14,6 @@ export class LoginComponent {
   }
   async handleAuth() {
     const response = await this.auth.SigninGoogle();
+    console.log(response);
   }
 }
