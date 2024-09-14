@@ -24,7 +24,7 @@ export class AuthService {
       if (session?.user) {
         this._ngZone.run(() => {
           this.router.navigate(['/chat']);
-        });
+        })
       } else{
         this.router.navigateByUrl("/login")
       }
