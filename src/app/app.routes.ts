@@ -6,16 +6,16 @@ export const routes: Routes = [
     path: 'chat',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/chat/chat.component').then((com) => com.ChatComponent),
+      import('./pages/chat/chat.component').then((m) => m.ChatComponent),
   },
   {
     path: 'login',
     loadComponent: () =>
-      import('./pages/login/login.component').then((com) => com.LoginComponent),
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: '',
     loadComponent: () =>
-      import('./pages/login/login.component').then((com) => com.LoginComponent),
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
 ];

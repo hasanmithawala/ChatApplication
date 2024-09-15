@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,11 +9,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private auth: AuthService) {
-    // constructor body
-  }
+  private auth = inject(AuthService);
   async handleAuth() {
     const response = await this.auth.signInWithGoogle();
-    console.log(response);
   }
 }

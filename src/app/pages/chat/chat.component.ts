@@ -7,15 +7,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ChatService } from '../../services/chat-service.service';
+import { ChatService } from '../../services/chat.service';
 import { Ichat } from '../../Interface/chatresponse';
 import { DatePipe } from '@angular/common';
 import { DeleteModalComponent } from '../../delete-modal/delete-modal.component';
-
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe, DeleteModalComponent],
+  imports: [ReactiveFormsModule, DatePipe,DeleteModalComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
 })
@@ -25,9 +24,7 @@ export class ChatComponent {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   chats = signal<Ichat[]>([]);
-
   chatForm!: FormGroup;
-
   constructor() {
     this.chatForm = this.fb.group({
       chat_message: ['', Validators.required],
@@ -51,12 +48,9 @@ export class ChatComponent {
 
   onSubmit() {
     const formValue = this.chatForm.value.chat_message;
-    console.log(formValue);
-
     this.chat_service
       .chatMessage(formValue)
       .then((res) => {
-        console.log(res);
         this.chatForm.reset();
         this.onListChat();
       })
@@ -65,7 +59,7 @@ export class ChatComponent {
       });
   }
 
-  onListChat() {
+  async onListChat() {
     this.chat_service
       .listChat()
       .then((res: Ichat[] | null) => {
@@ -82,7 +76,6 @@ export class ChatComponent {
   }
 
   openDropDown(msg: Ichat) {
-    console.log(msg);
     this.chat_service.selectedChats(msg);
   }
 }

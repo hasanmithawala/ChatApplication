@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { ChatService } from '../services/chat-service.service';
+import { ChatService } from '../services/chat.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,7 +32,6 @@ export class DeleteModalComponent {
           });
       })
       .catch((err) => {
-        console.log(err);
         alert(err.message);
       });
   }

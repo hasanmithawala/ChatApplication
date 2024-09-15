@@ -1,12 +1,12 @@
 export interface Ichat {
-    created_at: string;
-    editable: boolean;
+  created_at: string;
+  editable: boolean;
+  id: string;
+  sender: string;
+  text: string;
+  users: {
+    avatar_url: string;
     id: string;
-    sender: string;
-    text: string;
-    users: {
-      avatar_url: string;
-      id: string;
-      full_name: string;
-    };
-  }
+    full_name: string;
+  };
+}
